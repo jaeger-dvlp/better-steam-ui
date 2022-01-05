@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { MainContextProvider } from './Contexts/MainContext'
+import Homepage from './Pages/Homepage'
 
 function App() {
   return (
     <>
-      <div className="w-full text-center p-12">Better Steam UI</div>
+      <MainContextProvider>
+        <Homepage />
+      </MainContextProvider>
     </>
   )
 }
