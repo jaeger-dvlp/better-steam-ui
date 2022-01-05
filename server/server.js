@@ -14,7 +14,6 @@ app.use(cors())
 app.use(allowCrossDomain)
 
 app.get('/api/v1/getUser/', (req, res) => {
-  console.log(req.query)
   axios
     .get(
       `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAM_KEY}&steamids=${req.query.userId}`
