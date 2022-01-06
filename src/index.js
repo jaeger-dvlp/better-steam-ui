@@ -7,12 +7,28 @@ import Resources from './Resources'
 import './Styles/main.css'
 
 window.addEventListener('load', () => {
-  const backgroundSound = new Howl({
-    src: Resources.BackgroundTaiga,
+  const changeToMainSound = () => {
+    setTimeout(() => {
+      new Howl({
+        src: Resources.BgSound,
+        autoplay: true,
+        loop: true,
+        volume: 0
+      }).fade(0, 0.5, 5000)
+      StarterSound.fade(0.5, 0, 4000)
+    }, 13000)
+  }
+
+  const StarterSound = new Howl({
+    src: Resources.StarterSound,
     autoplay: true,
-    loop: true,
-    volume: 0.5
-  }).play()
+    loop: false,
+    volume: 0.5,
+    onplay: changeToMainSound()
+  })
+
+  StarterSound.play()
+
   return () => null
 })
 
