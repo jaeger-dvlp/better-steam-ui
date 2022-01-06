@@ -3,12 +3,18 @@ import MainContext from '../Contexts/MainContext'
 import { HiOutlineClock } from 'react-icons/hi'
 export default function Header() {
   const { userData } = useContext(MainContext)
-  const [time, setTime] = useState('?? : ??')
+  const [time, setTime] = useState({
+    hours: '??',
+    minutes: '??'
+  })
 
   useEffect(() => {
     const interval = setInterval(() => {
       let now = new Date()
-      setTime(`${now.getHours()} : ${now.getMinutes()}`)
+      setTime({
+        hours: now.getHours(),
+        minutes: now.getMinutes()
+      })
     }, 1000)
     return () => clearInterval(interval)
   }, [])
@@ -21,7 +27,7 @@ export default function Header() {
         </span>
         <div className="flex justify-center">
           <div className="p-3 text-white flex justify-center text-center">
-            <h1 className="self-center">{time}</h1>
+            <h1 className="self-center">{`${time.hours} : ${time.minutes}`}</h1>
           </div>
         </div>
       </div>
