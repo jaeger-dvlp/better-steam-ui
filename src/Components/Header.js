@@ -1,11 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import MainContext from '../Contexts/MainContext'
-
+import { HiOutlineClock } from 'react-icons/hi'
 export default function Header() {
   const { userData } = useContext(MainContext)
+  const [time, setTime] = useState('?? : ??')
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      let now = new Date()
+      setTime(`${now.getHours()} : ${now.getMinutes()}`)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <div className="w-full font-pop bg-gradient-to-b from-[rgba(0,0,0,0.5)] to-[rgba(0,0,0,0)] bg-opacity-20 flex flex-wrap justify-end xl:p-5 lg:p-5 p-3">
+    <div className="w-full font-pop bg-gradient-to-b from-[rgba(0,0,0,0.5)] to-[rgba(0,0,0,0)] bg-opacity-20 flex flex-wrap justify-between xl:p-5 lg:p-5 p-3">
+      <div className="flex select-none flex-wrap relative px-5 bg-black hover:bg-white hover:bg-opacity-10 transition-all duration-150 bg-opacity-30 shadow-lg p-0 rounded-lg">
+        <span className="p-0 text-2xl text-white self-center pr-0">
+          <HiOutlineClock />
+        </span>
+        <div className="flex justify-center">
+          <div className="p-3 text-white flex justify-center text-center">
+            <h1 className="self-center">{time}</h1>
+          </div>
+        </div>
+      </div>
       <div
         tabIndex={1}
         role="button"
