@@ -1,8 +1,10 @@
-import BackgroundTaiga from './Sounds/Background_Taiga.mp3'
+import BgSound from './Sounds/BgSound.mp3'
+import StarterSound from './Sounds/StarterSound.mp3'
 import MainBackground from './Videos/Main_Background.mp4'
 
 const Resources = {
-  BackgroundTaiga,
+  BgSound,
+  StarterSound,
   MainBackground
 }
 
