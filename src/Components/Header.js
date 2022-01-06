@@ -27,7 +27,19 @@ export default function Header() {
         </span>
         <div className="flex justify-center">
           <div className="p-3 text-white flex justify-center text-center">
-            <h1 className="self-center">{`${time.hours} : ${time.minutes}`}</h1>
+            <h1 className="self-center">{`${
+              time.hours === '??'
+                ? time.hours
+                : time.hours > 9
+                ? time.hours
+                : `0${time.hours}`
+            } : ${
+              time.minutes === '??'
+                ? time.minutes
+                : time.minutes > 9
+                ? time.minutes
+                : `0${time.minutes}`
+            }`}</h1>
           </div>
         </div>
       </div>
